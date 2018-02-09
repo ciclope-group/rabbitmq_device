@@ -50,7 +50,7 @@ class rabbitmq_device.Subscription(s_1,s_2,s_3,...)
 La clase Subscription representa las colas de las que un dispositivo puede 
 querer leer. Admite cualquier número de parámetros.
 Parámetros:
-- *s_i* | 0 <= i (/par <string,string>/) : Lista o tupla con <cola,prioridad> de los mensajes que se quieren recibir. 
+- *s_i* | 0 <= i (/string/) : Cadena de la forma 'cola:prioridad' que representa de qué cola y con qué prioridad se quieren recivir los mensajes.
 
 #+BEGIN_SRC python
 add_subscription(s_1,s_2,...)
@@ -58,4 +58,4 @@ add_subscription(s_1,s_2,...)
 
 Añadir más subscripciones.
 Parámetros:
-- *s_i* | 0 <= i (/string/) : Cadena de la forma 'cola:prioridad' para recibir los mensajes de dicha cola con dicha prioridad
+- *s_i* | 0 <= i (/string/) : Cadena de la forma 'cola:prioridad' que representa de qué cola y con qué prioridad se quieren recivir los mensajes.
