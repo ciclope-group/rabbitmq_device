@@ -73,7 +73,10 @@ class RabbitMQ_receiver:
                 queue=self.name,
                 no_ack=True)
         print("[x] Iniciado el consumo en {}".format(self.name))
-        self.channel.start_consuming()
+        try:
+            self.channel.start_consuming()
+        except KeyboardInterrupt:
+            self.connection.close()
     def __del__(self):
         self.connection.close()
 
