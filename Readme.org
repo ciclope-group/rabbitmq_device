@@ -1,0 +1,61 @@
+* rabbitmq_device
+Wrapper para RabbitMQ que simplifica y recibir mensajes básicos
+** RabbitMQ_sender
+#+BEGIN_SRC python
+class rabbitmq_device.RabbitMQ_sender(my_name,server_ip='localhost')
+#+END_SRC
+
+La clase RabbitMQ_sender representa un dispositivo que envía mensajes por la
+cola de mensajería RabbitMQ.
+
+Parámetros:
+- *my_name* (/string/) -- Nombre del dispositivo
+- *server_ip* (/string/) -- Dirección del servidor de RabbitMQ
+
+#+BEGIN_SRC python
+send_message(severity,message)
+#+END_SRC
+
+Enviar un mensaje a la cola de mensajería
+
+Parámetros:
+- *severity* (/string/) -- Prioridad del mensaje.
+- *message* (string) -- Cuerpo del mensaje
+
+** RabbitMQ_receiver
+#+BEGIN_SRC python
+class rabbitmq_device.RabbitMQ_receiver(subscription,callback,server_ip='localhost')
+#+END_SRC
+
+La clase RabbitMQ_receiver representa un dispositivo que recibe mensajes por la
+cola de mensajería RabbitMQ.
+
+Parámetros:
+- *subscription* (rabbitmq_device.Subscription) -- Definición de las colas a las que se quiere suscribir el dispositivo.
+- *callback* (/funcion/) -- Método que se ejecutará cuando se reciba un mensaje.
+  - Debe ser de la forma /callback(severity,message)/
+- *server_ip* (/string/) -- Dirección del servidor de RabbitMQ
+
+#+BEGIN_SRC python
+start_consuming()
+#+END_SRC
+
+Iniciar la escucha por la cola de mensajería.
+
+** Subscription
+#+BEGIN_SRC python
+class rabbitmq_device.Subscription(s_1,s_2,s_3,...)
+#+END_SRC
+
+La clase Subscription representa las colas de las que un dispositivo puede 
+querer leer. Admite cualquier número de parámetros.
+Parámetros:
+- *s_i* | 0 <= i (/par <string,string>/) : Lista o tupla con <cola,prioridad> de los mensajes que se quieren recibir. 
+
+#+BEGIN_SRC python
+add_subscription(s_1,s_2,...)
+#+END_SRC
+
+Añadir más subscripciones.
+Parámetros:
+- *s_i* | 0 <= i (/string/) : Cadena de la forma 'cola:prioridad' para recibir los mensajes de dicha cola con dicha prioridad
