@@ -1,5 +1,5 @@
 * rabbitmq_device
-Wrapper para RabbitMQ que simplifica y recibir mensajes básicos
+Wrapper para RabbitMQ que simplifica enviar y recibir mensajes básicos
 ** RabbitMQ_sender
 #+BEGIN_SRC python
 class rabbitmq_device.RabbitMQ_sender(my_name,server_ip='localhost')
