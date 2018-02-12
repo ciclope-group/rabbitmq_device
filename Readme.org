@@ -31,7 +31,7 @@ La clase RabbitMQ_receiver representa un dispositivo que recibe mensajes por la
 cola de mensajería RabbitMQ.
 
 Parámetros:
-- *subscription* (rabbitmq_device.Subscription) -- Definición de las colas a las que se quiere suscribir el dispositivo.
+- *subscription* (/rabbitmq_device.Subscription/) -- Definición de las colas a las que se quiere suscribir el dispositivo.
 - *callback* (/funcion/) -- Método que se ejecutará cuando se reciba un mensaje.
   - Debe ser de la forma /callback(severity,message)/
 - *server_ip* (/string/) -- Dirección del servidor de RabbitMQ
