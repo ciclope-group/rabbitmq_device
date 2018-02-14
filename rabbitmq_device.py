@@ -36,7 +36,7 @@ class RabbitMQ_sender:
 
 class RabbitMQ_receiver:
     'Clase de un dispositivo que recibirá mensajes de RabbitMQ'
-    def __init__(self,subscription,ip_server,callback):
+    def __init__(self,subscription,callback,ip_server='localhost'):
         '''Inicialización. Parámetros:
     subscription: Subscription      Colas y prioridaded de las que se quiere leer
 
@@ -73,10 +73,7 @@ class RabbitMQ_receiver:
                 queue=self.name,
                 no_ack=True)
         print("[x] Iniciado el consumo en {}".format(self.name))
-        try:
-            self.channel.start_consuming()
-        except KeyboardInterrupt:
-            self.connection.close()
+        self.channel.start_consuming()
     def __del__(self):
         self.connection.close()
 
